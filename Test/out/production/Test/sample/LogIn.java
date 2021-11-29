@@ -26,39 +26,23 @@ public class LogIn {
     @FXML
     private PasswordField password;
 
-    public ArrayList<Entry> loginInfo(){
-        ArrayList<Entry> entries = new ArrayList<Entry>();
+    public static ArrayList<Entry> loginInfo(){
         try{
-            FileInputStream fis = new FileInputStream(new File("./entrydata.ser"));
+            FileInputStream fis = new FileInputStream(new File("entrydata.ser"));
             ObjectInputStream ois = new ObjectInputStream(fis);
-
-            Entry entry1 = (Entry)ois.readObject();
-            while(true){
-                Entry person = (Entry)ois.readObject();
-                entries.add(person);
-                break;
-            }
-
-
-            ois.close();
-            fis.close();
-
-
-        }catch(IOException ex){
-            ex.printStackTrace();
+            ArrayList club = (ArrayList<Entry>)ois.readObject();
+            return club;
         }
-        catch(ClassNotFoundException e){
+        catch(IOException e){
             e.printStackTrace();
         }
-        catch (NullPointerException et){
+        catch(ClassNotFoundException et){
             et.printStackTrace();
         }
-        System.out.println(entries);
-        return entries;
+        return null;
+
     }
 
-    public LogIn() {
-    }
 
     public void userLogIn(ActionEvent event) throws IOException {
         this.checkLogin();
@@ -67,20 +51,26 @@ public class LogIn {
     private void checkLogin() throws IOException {
 
         Main m = new Main();
-        if (this.username.getText().toString().equals("doctor") && this.password.getText().toString().equals("123")) {
+
+        if(this.username.getText().toString().equals(loginInfo().get(0).name)){
             this.wrongLogIn.setText("Success!");
             m.changeScene("afterLogin.fxml");
-        } else if (this.username.getText().toString().equals("nurse") && this.password.getText().toString().equals("123")) {
-            this.wrongLogIn.setText("Success!");
-            m.changeScene("afterLogin-nurse.fxml");
-        } else if (this.username.getText().toString().equals("patient") && this.password.getText().toString().equals("123")) {
-            this.wrongLogIn.setText("Success!");
-            m.changeScene("AfterLoginPatient.fxml");
-        } else if (this.username.getText().isEmpty() && this.password.getText().isEmpty()) {
-            this.wrongLogIn.setText("Please enter your data.");
-        } else {
-            this.wrongLogIn.setText("Wrong username or password!");
         }
+//        }
+//        if (this.username.getText().toString().equals("doctor") && this.password.getText().toString().equals("123")) {
+//            this.wrongLogIn.setText("Success!");
+//            m.changeScene("afterLogin.fxml");
+//        } else if (this.username.getText().toString().equals("nurse") && this.password.getText().toString().equals("123")) {
+//            this.wrongLogIn.setText("Success!");
+//            m.changeScene("afterLogin-nurse.fxml");
+//        } else if (this.username.getText().toString().equals("patient") && this.password.getText().toString().equals("123")) {
+//            this.wrongLogIn.setText("Success!");
+//            m.changeScene("AfterLoginPatient.fxml");
+//        } else if (this.username.getText().isEmpty() && this.password.getText().isEmpty()) {
+//            this.wrongLogIn.setText("Please enter your data.");
+//        } else {
+//            this.wrongLogIn.setText("Wrong username or password!");
+//        }
 
     }
 

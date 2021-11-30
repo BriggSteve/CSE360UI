@@ -40,6 +40,11 @@ public class nurseListNurse implements Initializable{
         m.changeScene("afterLogin-nurse.fxml");
 
     }
+    public void addNurse(ActionEvent event) throws IOException{
+        Main m = new Main();
+        m.changeScene("addNurseNurse.fxml");
+
+    }
     private List<String> searchList(String searchWords, List<String> listOfStrings) {
 
         List<String> searchWordsArray = Arrays.asList(searchWords.trim().split(" "));

@@ -16,8 +16,9 @@ import java.util.stream.Collectors;
 
 public class patientList implements Initializable {
 
+
     ArrayList<String> names = new ArrayList<>( // EDIT THIS list to include patient names
-            Arrays.asList("Michael Baker", "Tony Stash", "Robert Danish")
+            Arrays.asList("Martin Prince", "Lauren Gregson")
     );
 
     @FXML
@@ -41,6 +42,10 @@ public class patientList implements Initializable {
         Main m = new Main();
         m.changeScene("AfterLogin.fxml");
 
+    }
+    public void addPatient(ActionEvent event) throws  IOException {
+        Main m = new Main();
+        m.changeScene("addPatientDoctor.fxml");
     }
     private List<String> searchList(String searchWords, List<String> listOfStrings) {
 

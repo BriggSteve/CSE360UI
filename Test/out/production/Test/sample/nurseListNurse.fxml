@@ -68,7 +68,7 @@
                 <TextField fx:id="searchBar" layoutX="411.0" layoutY="80.0" prefHeight="25.0" prefWidth="130.0" />
                 <Button layoutX="541.0" layoutY="80.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="59.0" text="Search" />
                 <ListView fx:id="listView" layoutX="342.0" layoutY="104.0" prefHeight="286.0" prefWidth="253.0" />
-                <Button layoutX="340.0" layoutY="80.0" mnemonicParsing="false" text="Add Nurse" />
+                <Button layoutX="340.0" layoutY="80.0" mnemonicParsing="false" onAction="#addNurse" text="Add Nurse" />
             </children>
         </AnchorPane>
     </center>

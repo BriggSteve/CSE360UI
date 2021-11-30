@@ -40,6 +40,10 @@ public class doctorList implements Initializable{
         m.changeScene("afterLogin.fxml");
 
     }
+    public void addDoctor(ActionEvent event) throws  IOException{
+        Main m = new Main();
+        m.changeScene("addDoctor.fxml");
+    }
     private List<String> searchList(String searchWords, List<String> listOfStrings) {
 
         List<String> searchWordsArray = Arrays.asList(searchWords.trim().split(" "));
